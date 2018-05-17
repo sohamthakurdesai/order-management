@@ -5,62 +5,41 @@ import PopupButton from './PopupButton';
 
 class CustomerDetails extends React.Component {
 
-    constructor(){
-        super();
-        this.state = {
-            customerName: "",
-            shippingAddress: "",
-            isShippingBillingSame: false,
-            billingAddress: "",
-            emailAddress: "",
-            contactNumber: "",
-        }
-    }
-
     render(){
         return(
             <div>
-                <h3>Customer Sign-up</h3>
+                <h3 className="myHeader">Customer Sign-up</h3>
                 <fieldset>
-                    <legend>Customer Details</legend>
-                        Customer Name*:
-                        <br/><input className="customer-details" type="text" id="customerName" name="customerName" align= "right" onChange={e=> this.handleChange(e)}/>
+                        <label>Customer Name*:</label>
+                        <br/><input value = {this.props.customerName} className="customer-details" placeholder="Customer's full Name" type="text" id="customerName" name="customerName" align= "right" onChange={e=> this.props.handleChange(e)}/>
                         <br/><br/>
-                        <PopupButton id="address" description = "Add address" popUpComponent={Address} popUpFunction= {this.saveFromPopup.bind(this)}/>
+                        
+                        <PopupButton id="address" description = "Add address" 
+                            popUpComponent={Address} 
+                            popUpFunction= {this.props.saveFromPopup}
+                            popUpChangeHandler={this.props.handleChange}
+                        />
+
                         <br/>
-                        Shipping Address*:
-                        <br/><textarea resize="none" readOnly="readonly" className="customer-address" type="text" id="shippingAddress" name="shippingAddress" value={this.state.shippingAddress} 
-                        onChange={e=> this.handleChange(e)}/>
+                        <label>Shipping Address*:</label>
+                        <br/><textarea resize="none" readOnly="readonly" className="customer-address" placeholder="Click on Add address" value = {this.props.shippingAddressValue} type="text" id="shippingAddress" name="shippingAddress" 
+                        onChange={e=> this.props.handleChange(e)}/>
                         <br/>
-                        <input type="checkbox" id="issShippingBillingSame" name="isShippingBillingSame"  onChange={e=> this.handleChange(e)}/>    Billing address same as Shipping Address
+                        <input type="checkbox" id="isShippingBillingSame" name="isShippingBillingSame"  onChange={e=> this.props.handleBoxChange(e)}/>&nbsp;<label>Billing address same as Shipping Address</label>
                         <br/>
-                        Billing Address*:
-                        <br/><textarea readOnly="readonly" className="customer-address" type="text" id="billingAddress" name="billingAddress" value={this.state.billingAddress} onChange={e=> this.handleChange(e)}/>
+                        <label>Billing Address*:</label>
+                        <br/><textarea readOnly="readonly" className="customer-address" value = {this.props.billingAddressValue} placeholder="Click on Add address" type="text" id="billingAddress" name="billingAddress" onChange={e=> this.props.handleChange(e)}/>
                         <br/>
-                        Email Address*:
-                        <br/><input className="customer-details" type="email" id="emailAddress" name="emailAddress" align= "right" onChange={e=> this.handleChange(e)}/>
+                        <label>Email Address*:</label>
+                        <br/><input value = {this.props.emailAddress} className="customer-details" placeholder="username@example.com" type="email" id="emailAddress" name="emailAddress" align= "right" onChange={e=> this.props.handleChange(e)}/>
                         <br/>
-                        Contact Number*: 
-                        <br/><input className="customer-details" type="number" id="contactNumber" name="contactNumber" align= "right" onChange={e=> this.handleChange(e)}/>
+                        <label>Contact Number*: </label>
+                        <br/><input value = {this.props.contactNumber} className="customer-details" type="number" id="contactNumber" name="contactNumber" align= "right" onChange={e=> this.props.handleChange(e)}/>
                 </fieldset>
             </div>
         )
     }
 
-    handleChange(evt){
-        this.setState({
-            [evt.target.name]: evt.target.value
-        })
-    }
-
-    saveFromPopup (){
-        this.setState(
-            {
-                shippingAddress: "input value",
-                billingAddress: "input value",
-            }
-        )
-    }
  }
 
  export default CustomerDetails;

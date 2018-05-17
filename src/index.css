@@ -1,11 +1,15 @@
 body {
     font:15px "Century Gothic", Futura, sans-serif;
     margin: 50px;
-    background-image: url("Literature.jpg");
+    background-image: url("AlfredHitchcock.jpg");
     background-repeat: no-repeat;
-    background-size: 800px 1000px;
-    background-position-x: 50%;
-    background-position-y: 30%;
+    background-size: 1500px 850px;
+    background-position-x: 0%;
+    background-position-y: 0%;
+}
+
+.myHeader {
+    color: white;
 }
 
 .customer-details,.login-details {
@@ -26,6 +30,10 @@ button, input[type="submit"]
 {
     margin:10px 10px 10px 10px;
     font: 20px "Century Gothic", Futura, sans-serif;
+}
+
+label, legend {
+    color: white;
 }
   
 .customer-address {

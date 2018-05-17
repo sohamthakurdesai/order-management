@@ -3,25 +3,14 @@ import ReactDOM, { render } from 'react-dom';
 
 class LoginDetails extends React.Component {
 
-    constructor(){
-        super();
-        this.state = {
-            
-        }
-    }
-
     render(){
         return(
              <form align="centre">
-             <label>
-             User Name*: 
-             <br/><input className="login-details" type="text" name="UserName" align= "right"/>
-             </label>
+             <label>User Name*:</label>
+             <br/><input value={this.props.userNameDefault} placeholder="Username" className="login-details" type="text" name="userName" align= "right" onChange = {e => this.props.handleChange(e)}/>
              <br/>
-             <label>
-             Password*:
-             <br/><input className="login-details" type="password" name="Password" align= "right"/>
-             </label>
+             <label>Password*:</label>
+             <br/><input value={this.props.passwordDefault} placeholder="New password" className="login-details" type="password" name="password" align= "right" onChange = {e => this.props.handleChange(e)}/>
              </form>
         );
     }

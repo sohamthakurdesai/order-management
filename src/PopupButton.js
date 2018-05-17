@@ -19,7 +19,7 @@ class PopupButton extends React.Component {
                 </a>
                 <div className="header"><b><i>{this.props.description}</i></b></div>
                 <div className="content">
-                  <PopUpComponent/>
+                  <PopUpComponent handleChange = {this.props.popUpChangeHandler}/>
                 </div>
                 <div className="actions">
                   <button className=".btn-primary" 
